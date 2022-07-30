@@ -31,6 +31,11 @@ app.use("/file", file_routes);
 
 app.use("/uploads",express.static('uploads'))
 
+app.get("/test", (_req, res) => {
+  console.log('test');
+  res.send('fuck');
+})
+
 import swaggerUI from "swagger-ui-express";
 import swaggerJsDoc from "swagger-jsdoc";
 
@@ -49,7 +54,9 @@ if (process.env.NODE_ENV == "development") {
   };
   const specs = swaggerJsDoc(options);
   app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));
+
 }
+
 
 import http from 'http';
 const server = http.createServer(app);

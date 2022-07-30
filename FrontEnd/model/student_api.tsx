@@ -36,24 +36,12 @@ const addStudents = async (st: Student) => {
     } else {
         console.log("addStudent fail")
     }
-} 
-
-const uploadImage = async (imageUri:String)=> {
-    console.log("uploadImage")
-    const formData = new FormData()
-    formData.append('file',{name: 'name', type:'iamge/jpeg', uri: imageUri})
-    let url = '/file/file'
-    const res = await apiClient.post(url,formData)
-    if (res.ok){
-        console.log("uploadImage passed " + res.data)
-        return res.data.url
-    }else{
-        console.log("save failed " + res.problem)
-    }
 }
+
+
 
 export default {
     getAllStudents,
-    addStudents,
-    uploadImage
+    addStudents
+    //uploadImage
 }
