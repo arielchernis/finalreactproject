@@ -1,9 +1,9 @@
 import React,{FC} from "react"
 import {View, Text} from "react-native"
-import { Button,Icon,Input } from '@rneui/themed';
+import {Button, Divider, Icon, Input} from '@rneui/themed';
 
 
-const Login: FC<{ navigation: any, route: any }> = ({ navigation, route }) => {
+const Register: FC<{ navigation: any, route: any }> = ({ navigation, route }) => {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
 
@@ -12,15 +12,21 @@ const Login: FC<{ navigation: any, route: any }> = ({ navigation, route }) => {
                 name="person-circle-outline"
                 type='ionicon'
             />
-
+            <Divider width = {30}/>
             <Input
                 placeholder='Email'
                 leftIcon={{  name: 'email' }}
                 />
             <Input
                 placeholder='Password'
-                leftIcon={{ type :'ionicon', name: 'key-outline' }}
+                leftIcon={{ type :'ionicon', name: 'lock-closed-outline' }}
             />
+
+            <Input
+                placeholder='Retype - Password'
+                leftIcon={{ type :'ionicon', name: 'lock-closed-outline' }}
+            />
+            <Divider width = {30}/>
             <Button
                 title="REGISTER"
                 buttonStyle={{
@@ -41,4 +47,4 @@ const Login: FC<{ navigation: any, route: any }> = ({ navigation, route }) => {
 )
 }
 
-export default Login
+export default Register
