@@ -11,7 +11,8 @@ import HomeScreen from "./screens/home_screen";
 import AboutScreen from "./screens/about_screen";
 import DetailsScreen from "./screens/details_screen";
 import AddStudentScreen from "./screens/add_student_screen";
-import COLORS from "./constants/colors"
+import LoginScreen from "./screens/Login_Screen";
+import COLORS from "./constants/colors";
 
 const Tab = createBottomTabNavigator();
 
@@ -67,6 +68,27 @@ const App: FC = () => {
 
 
 import colors from "./constants/colors";
+
+import * as ImagePicker from 'expo-image-picker'
+
+const MyImagePicker:FC = ()=> {
+    useEffect(()=>{
+        requestPermission()
+    },[])
+
+    const requestPermission = async () => {
+        const res = await ImagePicker.requestCameraPermissionsAsync()
+        if(!res.granted){
+            alert("You need to accept Camera permissions")
+        }
+    }
+
+    return (
+        <View>
+            <Text>MyImagePicker</Text>
+        </View>
+    )
+}
 
 
 const App2: FC = () => {

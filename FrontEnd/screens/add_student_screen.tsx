@@ -24,7 +24,7 @@ const AddStudent: FC<{ navigation: any, route: any }> = ({ navigation, route }) 
             console.log("saving image")
             const url = await StudnetModel.uploadImage(imageUri)
             student.imageUrl = url
-            console.log("saving image fimish url : " + url) 
+            console.log("saving image finish url : " + url) 
         }
         await StudnetModel.addStudents(student)
         navigation.goBack()

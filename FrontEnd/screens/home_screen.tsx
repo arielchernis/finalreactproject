@@ -11,8 +11,8 @@ const StudentListRow: FC<{ student: Student, onItemClick: (id:String)=>void }> =
             onPress={()=>{onItemClick(student.id)}}
             underlayColor={COLORS.clickBackground}>
             <View style={styles.list_row_container}>
-                { student.imageUrl != "" &&  <Image source={{uri: student.imageUrl.toString()}} style={styles.list_row_image}></Image>}
-                { student.imageUrl == "" &&  <Image source={require("../assets/avatar.jpeg")} style={styles.list_row_image}></Image>}
+                { student?.imageUrl != "" &&  <Image source={{uri: student.imageUrl.toString()}} style={styles.list_row_image}></Image>}
+                { student?.imageUrl == "" &&  <Image source={require("../assets/avatar.jpeg")} style={styles.list_row_image}></Image>}
                 <View style={styles.list_row_text_container}>
                     <Text style={styles.list_row_name}>{student.name}</Text>
                     <Text style={styles.list_row_id}>{student.id}</Text>
