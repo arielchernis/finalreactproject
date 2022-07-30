@@ -11,7 +11,8 @@ import HomeScreen from "./screens/home_screen";
 import AboutScreen from "./screens/about_screen";
 import DetailsScreen from "./screens/details_screen";
 import AddStudentScreen from "./screens/add_student_screen";
-import LoginScreen from "./screens/Login_Screen";
+import LoginScreen from "./screens/Login_screen";
+import RegisterScreen from "./screens/Register_screen";
 import COLORS from "./constants/colors";
 
 const Tab = createBottomTabNavigator();
@@ -32,14 +33,7 @@ const HomeStackScreen: FC<{ navigation: any, route: any }> = ({ navigation, rout
         navigation.navigate("AddStudent")
     }
     return (
-        <HomeStack.Navigator>
-            <HomeStack.Screen name="Home" component={HomeScreen} 
-                options={{
-                    headerRight: ()=><ToBarAddButton onClick={()=>openAddStudent()}></ToBarAddButton>
-                }} />
-            <HomeStack.Screen name="Details" component={DetailsScreen} />
-            <HomeStack.Screen name="AddStudent" component={AddStudentScreen} />
-        </HomeStack.Navigator>
+        <LoginScreen></LoginScreen>
     );
 }
 
@@ -49,18 +43,18 @@ const App: FC = () => {
             <Tab.Navigator screenOptions={({ route }) => ({
                 tabBarIcon: ({ focused, color, size }) => {
                     let iconName;
-                    if (route.name === 'About') {
-                        iconName = focused ? 'information-circle' : 'information-circle-outline';
-                    } else if (route.name === 'HomeStack') {
-                        iconName = focused ? 'home' : 'home-outline';
+                    if (route.name === 'Register') {
+                        iconName = focused ? 'key' : 'key-outline';
+                    } else if (route.name === 'Log-in') {
+                        iconName = focused ? 'person' : 'person-outline';
                     }
                     return <Ionicons name={iconName} size={size} color={color} />;
                 },
                 tabBarActiveTintColor: 'tomato',
                 tabBarInactiveTintColor: 'gray',
             })}>
-                <Tab.Screen name="HomeStack" component={HomeStackScreen} options={{ headerShown: false }}></Tab.Screen>
-                <Tab.Screen name="About" component={AboutScreen}></Tab.Screen>
+                <Tab.Screen name="Log-in" component={LoginScreen} options={{ headerShown: false }}></Tab.Screen>
+                <Tab.Screen name="Register" component={RegisterScreen} options={{ headerShown: false }}></Tab.Screen>
             </Tab.Navigator>
         </NavigationContainer>
     )
