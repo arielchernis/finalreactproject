@@ -1,0 +1,49 @@
+
+###
+
+GET http://localhost:3000/post
+
+###
+
+
+GET http://localhost:3000/post?sender=eliav2
+
+###
+
+GET http://localhost:3000/post/62260bf39f8f7ff5c48ded71
+
+
+###
+
+POST http://localhost:3000/post
+Content-Type: application/json
+
+{
+    "message" : "this is my first message",
+    "sender" : "eliav2"
+}
+
+###
+
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{
+    "email" : "t2t@t.com",
+    "password" : "222222"
+}
+
+
+###
+
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+    "email" : "t2t@t.com",
+    "password" : "2282222"
+}
+
+###
+
+GET http://localhost:3000/auth/test2

@@ -1,0 +1,68 @@
+
+###
+
+GET http://localhost:3000/post
+
+###
+
+
+GET http://localhost:3000/post?sender=ivan2
+
+###
+
+GET http://localhost:3000/post/624d8f0b439e9fe03350229f
+
+
+###
+
+POST http://localhost:3000/post
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmRjZTczZWU2NWMwZDBlYmI0N2ZmYjciLCJpYXQiOjE2NTg3NjI1ODEsImV4cCI6MTY1ODc2Mjg4MX0.pvvmYflWa3aCWVfzP6eq2eEItTNNjm0pv2n2CIziBT0
+
+{
+    "message" : "ivan post",
+    "sender" : "ivan@test.com",
+    "imageUrl" :"https://images.unsplash.com/photo-1602271886918-bafecc837c7a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1935&q=80"
+}
+
+###
+
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{
+    "email" : "ivan@test.com",
+    "password" : "123123"
+}
+
+
+###
+
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+    "email" : "ivan@test.com",
+    "password" : "123123"
+}
+
+###
+
+DELETE http://localhost:3000/post/624d9fb2c53ba7cebaf1dc36
+Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjRkOWZiMmM1M2JhN2NlYmFmMWRjMzYiLCJpYXQiOjE2NTc5NjAxNTYsImV4cCI6MTY1Nzk2MDQ1Nn0.naClBXVFl_ifozBEZ6pY1Ls6yEdcNc_6OL4xzK8Q8Z4
+
+###
+GET http://localhost:3000/post/user/t2t@t.com
+Content-Type: application/json
+
+
+###
+
+POST  http://localhost:3000/post/updatepost/624d9fb2c53ba7cebaf1dc36
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjRkOWZiMmM1M2JhN2NlYmFmMWRjMzYiLCJpYXQiOjE2NTc5NjAzOTIsImV4cCI6MTY1Nzk2MDY5Mn0.9v2DzzJOVRVpAgfQMCY05uNddlMpYOqdGocoQqCVOtc
+
+{
+    "message" : "this is a new message"
+}
