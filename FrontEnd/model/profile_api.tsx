@@ -3,7 +3,7 @@ import { Profile } from "./profile_model"
 import FormData from 'form-data'
 
 const getAllProfiles = async () => {
-    console.log("getAllStudents")
+    console.log("getAllprofiles")
     const res = await apiClient.get("/post")
     let profiles = Array<Profile>()
     if (res.ok) {
@@ -20,9 +20,9 @@ const getAllProfiles = async () => {
             })
         }
     } else {
-        console.log("getAllStudents fail")
+        console.log("getAllProfiles fail")
     }
-    return students
+    return profiles
 }
 
 const addProfiles = async (st: Profile) => {

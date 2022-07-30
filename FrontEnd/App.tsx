@@ -30,10 +30,10 @@ const ToBarAddButton:FC<{onClick:()=>void}>=({onClick})=>{
 
 const HomeStackScreen: FC<{ navigation: any, route: any }> = ({ navigation, route }) => {
     const openAddStudent = ()=>{
-        navigation.navigate("AddStudent")
+        navigation.navigate("addProfiles")
     }
     return (
-        <LoginScreen></LoginScreen>
+        <LoginScreen navigation={undefined} route={undefined}></LoginScreen>
     );
 }
 

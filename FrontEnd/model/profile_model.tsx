@@ -7,13 +7,13 @@ export type Profile = {
 }
 
 
-const getAllStudents = async ()=>{
-    const students = await ProfileApi.getAllStudents()
+const getAllProfiles = async ()=>{
+    const students = await ProfileApi.getAllProfiles()
     return students
 }
 
-const addStudents = async (st:Profile)=>{
-    await StudentApi.addStudents(st)
+const addProfiles = async (st:Profile)=>{
+    await ProfileApi.addProfiles(st)
 }
 const createUserProfile = async (email:String,password:String,name:String)=> {
     await ProfileApi.createUserProfile(email, password, name)
@@ -25,8 +25,8 @@ const createUserProfile = async (email:String,password:String,name:String)=> {
     }*/
 }
 export default {
-    addStudents,
-    getAllStudents,
+    addProfiles,
+    getAllProfiles,
     createUserProfile
    // uploadImage
 }

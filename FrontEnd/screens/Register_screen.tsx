@@ -12,13 +12,14 @@ const Register: FC<{ navigation: any, route: any }> = ({ navigation, route }) =>
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
     const onSubmit = async () => {
+        /*
         setIsLoading(true)
         let user: User = {
             email: email,
             password: password
 
         }
-
+        */
        let register
        if (register) {
             await Profile_model.createUserProfile("", "","");
