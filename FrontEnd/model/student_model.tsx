@@ -5,8 +5,16 @@ export type Student = {
     name:String,
     imageUrl: String
 }
-
-
+export type User = {
+    name: String,
+    email: String,
+    password: String
+}
+// Users
+const addUsers = async (us:User)=>{
+    await StudentApi.addUsers(us)
+}
+// Students
 const getAllStudents = async ()=>{
     const students = await StudentApi.getAllStudents()
     return students
@@ -24,5 +32,6 @@ const uploadImage = async (imageUri:String)=> {
 export default {
     addStudents,
     getAllStudents,
-    uploadImage
+    uploadImage,
+    addUsers
 }

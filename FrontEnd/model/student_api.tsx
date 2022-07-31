@@ -37,11 +37,25 @@ const addStudents = async (st: Student) => {
         console.log("addStudent fail")
     }
 }
+// Users
 
+const addUsers = async (us: User) => {
+    const res = await apiClient.post("/auth/register", {
+        email: us.email,
+        password: us.password
+    })
+    if (res.ok) {
+        console.log("addUser success")
+    } else {
+        console.log("addUSer fail")
+    }
+}
 
 
 export default {
     getAllStudents,
-    addStudents
+    addStudents,
+    addUsers
+
     //uploadImage
 }

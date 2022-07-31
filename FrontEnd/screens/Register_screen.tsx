@@ -1,8 +1,8 @@
 import React, {FC, useState} from "react"
-import apiClient from "../model/ApiClient";
+
 import {View, Text} from "react-native"
 import {Button, Divider, Icon, Input} from '@rneui/themed';
-import Profile_model from "../model/profile_model";
+import StudnetModel, { User } from "../model/student_model"
 
 
 const Register: FC<{ navigation: any, route: any }> = ({ navigation, route }) => {
@@ -12,26 +12,18 @@ const Register: FC<{ navigation: any, route: any }> = ({ navigation, route }) =>
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
     const onSubmit = async () => {
-        /*
+
         setIsLoading(true)
+
         let user: User = {
+            name: name,
             email: email,
             password: password
 
         }
-        */
-       let register
-       if (register) {
-            await Profile_model.createUserProfile("", "","");
-            setIsLoading(false)
-            setEmail("");
-            setPassword("")
-            setName("")
-            return register;
-        } else {
-            setIsLoading(false)
-            alert("failed to register")
-        }
+
+        await StudnetModel.addUsers(user)
+
     }
         return (
             <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
@@ -44,6 +36,7 @@ const Register: FC<{ navigation: any, route: any }> = ({ navigation, route }) =>
                 <Divider width={30}/>
                 <Input
                     onChangeText={setName}
+
                     placeholder='name'
                     leftIcon={{name: 'face'}}
                 />
