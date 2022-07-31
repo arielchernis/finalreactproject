@@ -5,9 +5,13 @@ import { Button,Icon,Input,Divider } from '@rneui/themed';
 import StudnetModel, { User } from "../model/student_model"
 import Student_model from "../model/student_model";
 
+import Home_screen from "./home_screen";
 
-const Login: FC<{ navigation: any, route: any }> = ({ navigation, route }) => {
-    const [isLoading, setIsLoading] = useState<boolean>(false)
+
+
+
+const Login: FC<{ navigation: any, route: any ,isLogin:boolean}> = ({ navigation, route , isLogin}) => {
+    const [isLoading, setIsLoading] = useState<boolean>(true)
     const [email, setEmail] = useState<string>("")
     const [password, setPassword] = useState<string>("")
 
@@ -23,13 +27,14 @@ const Login: FC<{ navigation: any, route: any }> = ({ navigation, route }) => {
 
         }
         console.log(user)
+
         let result = await Student_model.getUser(user);
         if (result) {
-
-            console.log(`i just logged in`);
-           /* console.log(result);
+           navigation.navigate(Home_screen)
+           console.log(`i just logged in`);
+           console.log(result);
             setIsLoading(false);
-            await Credentials.setCredentials(result);
+           /* await Credentials.setCredentials(result);
             dispatch(AuthActions.setUserToken(result));
             dispatch(AuthActions.setIsLoggedIn(true));*/
 

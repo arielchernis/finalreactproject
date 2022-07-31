@@ -4,6 +4,9 @@ import { View, Text, StyleSheet, Button, Image, TouchableHighlight } from 'react
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
+import 'react-native-gesture-handler';
 
 import Ionicons from '@expo/vector-icons/Ionicons';
 
@@ -15,9 +18,16 @@ import LoginScreen from "./screens/Login_screen";
 import RegisterScreen from "./screens/Register_screen";
 import COLORS from "./constants/colors";
 
+
+
+
 const Tab = createBottomTabNavigator();
 
 const HomeStack = createNativeStackNavigator();
+
+const Stack = createStackNavigator();
+
+const UpperTab = createMaterialTopTabNavigator();
 
 const ToBarAddButton:FC<{onClick:()=>void}>=({onClick})=>{
     return(
@@ -28,19 +38,23 @@ const ToBarAddButton:FC<{onClick:()=>void}>=({onClick})=>{
     )
 }
 
-const HomeStackScreen: FC<{ navigation: any, route: any }> = ({ navigation, route }) => {
+/*const HomeStackScreen: FC<{ navigation: any, route: any }> = ({ navigation, route }) => {
     const openAddStudent = ()=>{
         navigation.navigate("addProfiles")
     }
     return (
         <LoginScreen navigation={undefined} route={undefined}></LoginScreen>
     );
-}
+}*/
 
 const App: FC = () => {
+    let [Login , setLogin] = useState<boolean>(false)
+
+
     return (
+
         <NavigationContainer>
-            <Tab.Navigator screenOptions={({ route }) => ({
+            <Stack.Navigator screenOptions={({ route }) => ({
                 tabBarIcon: ({ focused, color, size }) => {
                     let iconName;
                     if (route.name === 'Register') {
@@ -53,9 +67,10 @@ const App: FC = () => {
                 tabBarActiveTintColor: 'tomato',
                 tabBarInactiveTintColor: 'gray',
             })}>
-                <Tab.Screen name="Log-in" component={LoginScreen} options={{ headerShown: false }}></Tab.Screen>
-                <Tab.Screen name="Register" component={RegisterScreen} options={{ headerShown: false }}></Tab.Screen>
-            </Tab.Navigator>
+                <Stack.Screen name="Log-in" component = {LoginScreen}  options={{ headerShown: false }}></Stack.Screen>
+                <Stack.Screen name="Register" component={RegisterScreen} options={{ headerShown: false }}></Stack.Screen>
+                <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }}></Stack.Screen>
+            </Stack.Navigator>
         </NavigationContainer>
     )
 }
