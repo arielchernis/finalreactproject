@@ -1,5 +1,5 @@
 import apiClient from "./ApiClient"
-import { Student } from "./student_model"
+import { Student, User } from "./student_model"
 import FormData from 'form-data'
 
 const getAllStudents = async () => {
@@ -50,12 +50,30 @@ const addUsers = async (us: User) => {
         console.log("addUSer fail")
     }
 }
+const getUser = async (us: User) => {
+    console.log("getUser")
+    const res = await apiClient.post("/auth/login",{
+        name: "",
+        email: us.email,
+        password: us.password
 
+    })
+    if  (res.ok) {
+        console.log("getUser res.data " + res.data)
+        if (res.data){
+
+               return us;
+            }
+        }else {
+        console.log("getUser fail")
+    }
+    }
 
 export default {
     getAllStudents,
     addStudents,
-    addUsers
+    addUsers,
+    getUser
 
     //uploadImage
 }

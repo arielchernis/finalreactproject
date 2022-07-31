@@ -14,6 +14,10 @@ export type User = {
 const addUsers = async (us:User)=>{
     await StudentApi.addUsers(us)
 }
+const getUser = async (us:User)=>{
+    const user = await StudentApi.getUser(us)
+    return user
+}
 // Students
 const getAllStudents = async ()=>{
     const students = await StudentApi.getAllStudents()
@@ -33,5 +37,6 @@ export default {
     addStudents,
     getAllStudents,
     uploadImage,
-    addUsers
+    addUsers,
+    getUser
 }
