@@ -29,11 +29,11 @@ const Register: FC<{ navigation: any, route: any }> = ({ navigation, route }) =>
 
         }
 
-        let result = await StudnetModel.addUsers(user)
-        if (result) {
+        let register = await StudnetModel.addUsers(user)
+        if (register) {
             navigation.goBack()
             console.log(`i just Registered`);
-            console.log(result);
+            console.log(register);
             setIsLoading(false);
             /* await Credentials.setCredentials(result);
              dispatch(AuthActions.setUserToken(result));

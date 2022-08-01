@@ -38,6 +38,7 @@ const Login: FC<{ navigation: any, route: any ,isLogin:boolean}> = ({ navigation
                 //in facebook
                 fetch('https://graph.facebook.com/me?access_token=${token}&fields=id,name.email,picture.height(500)').then(response => response.json()).then(data => {
                     setLoggedinStatus(true)
+                    navigation.navigate(MainScreen)
                     setUserData(data)
                 }).catch(e => console.log(e))
                 
