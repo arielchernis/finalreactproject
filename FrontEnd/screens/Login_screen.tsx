@@ -9,6 +9,7 @@ import MainScreen from "./Main_screen"
 import Register_screen from "./Register_screen"
 import Home from "./home_screen";
 
+import * as Facebook from 'expo-facebook'
 
 
 
@@ -17,6 +18,45 @@ const Login: FC<{ navigation: any, route: any ,isLogin:boolean}> = ({ navigation
     const [email, setEmail] = useState<string>("")
     const [password, setPassword] = useState<string>("")
 
+    const [isLoggedin,setLoggedinStatus] = useState(false)
+    const [userData, SetUserDate] = useState(null)
+    const [isImageLoading,setImageLoadStatus] = useState(false)
+
+    
+    const facebookLogIn = async () => {
+        try{
+            await Facebook.initializeAsync({
+                appId: '428633885869147'
+            })
+
+            const {
+                type
+            } = await Facebook.logInWithReadPermissionsAsync({
+                permissions: ['public_profile']
+            })
+            if(type === 'success'){
+                //in facebook
+                fetch('https://graph.facebook.com/me?access_token=${token}&fields=id,name.email,picture.height(500)').then(response => response.json()).then(data => {
+                    setLoggedinStatus(true)
+                    setUserData(data)
+                }).catch(e => console.log(e))
+                
+
+            }else{
+                console.log('failed to log  in')
+            }
+
+        }catch({message}){
+            alert('facebook login error')
+        }
+    }
+/*
+    logout = () => {
+        setLoggedinStatus(false)
+        setUserDataAsync(null)
+        setImageLoadStatus(false)
+    }
+*/
 
     const onReg = async () => {
         navigation.navigate(Register_screen)
@@ -101,6 +141,25 @@ const Login: FC<{ navigation: any, route: any ,isLogin:boolean}> = ({ navigation
                 }}
                 titleStyle={{ fontWeight: 'bold' }}
             />
+            <Divider width = {30}/>
+
+            <Button
+                title="Login with Facebook"
+                onPress={facebookLogIn}
+                buttonStyle={{
+                    backgroundColor: 'black',
+                    borderWidth: 2,
+                    borderColor: 'white',
+                    borderRadius: 30,
+                }}
+                containerStyle={{
+                    width: 200,
+                    marginHorizontal: 50,
+                    marginVertical: 10,
+                }}
+                titleStyle={{ fontWeight: 'bold' }}
+            />
+
 
         </View>
     )
