@@ -5,7 +5,9 @@ import { Button,Icon,Input,Divider } from '@rneui/themed';
 import StudnetModel, { User } from "../model/student_model"
 import Student_model from "../model/student_model";
 
-import Home_screen from "./home_screen";
+import MainScreen from "./Main_screen"
+import Register_screen from "./Register_screen"
+import Home from "./home_screen";
 
 
 
@@ -16,7 +18,9 @@ const Login: FC<{ navigation: any, route: any ,isLogin:boolean}> = ({ navigation
     const [password, setPassword] = useState<string>("")
 
 
-
+    const onReg = async () => {
+        navigation.navigate(Register_screen)
+    }
     const onSubmit = async () => {
 
         setIsLoading(true)
@@ -30,7 +34,7 @@ const Login: FC<{ navigation: any, route: any ,isLogin:boolean}> = ({ navigation
 
         let result = await Student_model.getUser(user);
         if (result) {
-           navigation.navigate(Home_screen)
+           navigation.navigate(MainScreen)
            console.log(`i just logged in`);
            console.log(result);
             setIsLoading(false);
@@ -68,6 +72,22 @@ const Login: FC<{ navigation: any, route: any ,isLogin:boolean}> = ({ navigation
             <Button
                 title="LOG-IN"
                 onPress={onSubmit}
+                buttonStyle={{
+                    backgroundColor: 'black',
+                    borderWidth: 2,
+                    borderColor: 'white',
+                    borderRadius: 30,
+                }}
+                containerStyle={{
+                    width: 200,
+                    marginHorizontal: 50,
+                    marginVertical: 10,
+                }}
+                titleStyle={{ fontWeight: 'bold' }}
+            />
+            <Button
+                title="I WANT TO  REGISTER"
+                onPress={onReg}
                 buttonStyle={{
                     backgroundColor: 'black',
                     borderWidth: 2,

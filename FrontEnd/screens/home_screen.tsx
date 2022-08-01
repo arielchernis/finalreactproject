@@ -4,6 +4,20 @@ import { View, Text, Image, StyleSheet, FlatList, TouchableHighlight } from "rea
 import COLORS from "../constants/colors"
 import StudentModel,{Student} from "../model/student_model"
 import ActivityIndicator from "./component/custom_activity_indicator"
+import Ionicons from "@expo/vector-icons/Ionicons";
+import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
+import {createNativeStackNavigator} from "@react-navigation/native-stack";
+import {createMaterialTopTabNavigator} from "@react-navigation/material-top-tabs";
+import { NavigationContainer } from "@react-navigation/native";
+import DetailsScreen from "./details_screen";
+import AddStudentScreen from "./add_student_screen";
+
+const Tab = createBottomTabNavigator();
+const HomeStack = createNativeStackNavigator();
+const UpperTab = createMaterialTopTabNavigator();
+const BotTab = createBottomTabNavigator()
+
+
 
 const StudentListRow: FC<{ student: Student, onItemClick: (id:String)=>void }> = ({ student, onItemClick }) => {
     return (
@@ -21,7 +35,6 @@ const StudentListRow: FC<{ student: Student, onItemClick: (id:String)=>void }> =
         </TouchableHighlight>
     )
 }
-
 
 const Home: FC<{ navigation: any, route: any }> = ({ navigation, route }) => {
     const [data, setData] = useState<Array<Student>>()
@@ -56,6 +69,7 @@ const Home: FC<{ navigation: any, route: any }> = ({ navigation, route }) => {
             <View style={styles.activity_indicator}>
                 <ActivityIndicator visible={isLoading}></ActivityIndicator>
             </View>
+
         </View>
     )
 }

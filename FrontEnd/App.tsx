@@ -16,6 +16,7 @@ import DetailsScreen from "./screens/details_screen";
 import AddStudentScreen from "./screens/add_student_screen";
 import LoginScreen from "./screens/Login_screen";
 import RegisterScreen from "./screens/Register_screen";
+import MainScreen from "./screens/Main_screen"
 import COLORS from "./constants/colors";
 
 
@@ -29,26 +30,12 @@ const Stack = createStackNavigator();
 
 const UpperTab = createMaterialTopTabNavigator();
 
-const ToBarAddButton:FC<{onClick:()=>void}>=({onClick})=>{
-    return(
-        <TouchableHighlight onPress={()=>{onClick()}}
-            underlayColor={COLORS.clickBackground}>
-            <Ionicons name={"add-outline"} size={40} color={'gray'} />
-        </TouchableHighlight>
-    )
-}
 
-/*const HomeStackScreen: FC<{ navigation: any, route: any }> = ({ navigation, route }) => {
-    const openAddStudent = ()=>{
-        navigation.navigate("addProfiles")
-    }
-    return (
-        <LoginScreen navigation={undefined} route={undefined}></LoginScreen>
-    );
-}*/
+
+
+
 
 const App: FC = () => {
-    let [Login , setLogin] = useState<boolean>(false)
 
 
     return (
@@ -69,7 +56,8 @@ const App: FC = () => {
             })}>
                 <Stack.Screen name="Log-in" component = {LoginScreen}  options={{ headerShown: false }}></Stack.Screen>
                 <Stack.Screen name="Register" component={RegisterScreen} options={{ headerShown: false }}></Stack.Screen>
-                <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }}></Stack.Screen>
+                <Stack.Screen name="Home" component={HomeScreen} ></Stack.Screen>
+                <Stack.Screen name="MainScreen" component={MainScreen} ></Stack.Screen>
             </Stack.Navigator>
         </NavigationContainer>
     )

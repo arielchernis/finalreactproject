@@ -3,6 +3,9 @@ import React, {FC, useState} from "react"
 import {View, Text} from "react-native"
 import {Button, Divider, Icon, Input} from '@rneui/themed';
 import StudnetModel, { User } from "../model/student_model"
+import Home_screen from "./home_screen";
+import LoginScreen from "./Login_screen";
+import MainScreen from "./main_screen";
 
 
 const Register: FC<{ navigation: any, route: any }> = ({ navigation, route }) => {
@@ -11,6 +14,10 @@ const Register: FC<{ navigation: any, route: any }> = ({ navigation, route }) =>
     const [password, setPassword] = useState<String>("")
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
+
+    const onLogin = async () => {
+        navigation.goBack()
+    }
     const onSubmit = async () => {
 
         setIsLoading(true)
@@ -22,8 +29,22 @@ const Register: FC<{ navigation: any, route: any }> = ({ navigation, route }) =>
 
         }
 
-        await StudnetModel.addUsers(user)
+        let result = await StudnetModel.addUsers(user)
+        if (result) {
+            navigation.goBack()
+            console.log(`i just Registered`);
+            console.log(result);
+            setIsLoading(false);
+            /* await Credentials.setCredentials(result);
+             dispatch(AuthActions.setUserToken(result));
+             dispatch(AuthActions.setIsLoggedIn(true));*/
 
+
+
+        } else {
+            setIsLoading(false)
+            alert("User Already Exsists")
+        }
     }
         return (
             <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
@@ -67,6 +88,23 @@ const Register: FC<{ navigation: any, route: any }> = ({ navigation, route }) =>
                         marginVertical: 10,
                     }}
                     onPress={onSubmit}
+
+                    titleStyle={{fontWeight: 'bold'}}
+                />
+                <Button
+                    title="i WANT TO LOGIN"
+                    buttonStyle={{
+                        backgroundColor: 'black',
+                        borderWidth: 2,
+                        borderColor: 'white',
+                        borderRadius: 30,
+                    }}
+                    containerStyle={{
+                        width: 200,
+                        marginHorizontal: 50,
+                        marginVertical: 10,
+                    }}
+                    onPress={onLogin}
 
                     titleStyle={{fontWeight: 'bold'}}
                 />
