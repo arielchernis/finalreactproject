@@ -42,7 +42,7 @@ const Home: FC<{ navigation: any, route: any }> = ({ navigation, route }) => {
 
     const openDetails = (id:String)=>{
         console.log("on press " + id)
-        navigation.navigate('Details', {id: id})
+        navigation.navigate(DetailsScreen, {id: id})
     }
 
     useEffect(()=>{

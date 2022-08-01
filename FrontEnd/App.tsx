@@ -58,6 +58,9 @@ const App: FC = () => {
                 <Stack.Screen name="Register" component={RegisterScreen} options={{ headerShown: false }}></Stack.Screen>
                 <Stack.Screen name="Home" component={HomeScreen} ></Stack.Screen>
                 <Stack.Screen name="MainScreen" component={MainScreen} ></Stack.Screen>
+                <Stack.Screen name="DetailsScreen" component={DetailsScreen} ></Stack.Screen>
+                <Stack.Screen name="AddStudentScreen" component={AboutScreen} ></Stack.Screen>
+                <Stack.Screen name="AboutScreen" component={AboutScreen} options={{ headerShown: false }}></Stack.Screen>
             </Stack.Navigator>
         </NavigationContainer>
     )
