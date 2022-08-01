@@ -10,13 +10,15 @@ import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import {createMaterialTopTabNavigator} from "@react-navigation/material-top-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import DetailsScreen from "./details_screen";
-import AddStudentScreen from "./add_student_screen";
+import AddStudent from "./add_student_screen";
+import {Button} from "@rneui/themed";
+
+
 
 const Tab = createBottomTabNavigator();
 const HomeStack = createNativeStackNavigator();
 const UpperTab = createMaterialTopTabNavigator();
 const BotTab = createBottomTabNavigator()
-
 
 
 const StudentListRow: FC<{ student: Student, onItemClick: (id:String)=>void }> = ({ student, onItemClick }) => {
@@ -44,6 +46,9 @@ const Home: FC<{ navigation: any, route: any }> = ({ navigation, route }) => {
         console.log("on press " + id)
         navigation.navigate(DetailsScreen, {id: id})
     }
+    const onPost = () => {
+        navigation.navigate(AddStudent)
+    }
 
     useEffect(()=>{
         navigation.addListener('focus',()=>{
@@ -60,6 +65,7 @@ const Home: FC<{ navigation: any, route: any }> = ({ navigation, route }) => {
 
     return (
         <View style={styles.home_container}>
+
             <FlatList
                 data={data}
                 keyExtractor={item => item.id.toString()}

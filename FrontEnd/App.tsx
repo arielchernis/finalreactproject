@@ -12,8 +12,8 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 
 import HomeScreen from "./screens/home_screen";
 import AboutScreen from "./screens/about_screen";
-import DetailsScreen from "./screens/details_screen";
-import AddStudentScreen from "./screens/add_student_screen";
+import Details from "./screens/details_screen";
+import AddPost from "./screens/add_student_screen";
 import LoginScreen from "./screens/Login_screen";
 import RegisterScreen from "./screens/Register_screen";
 import MainScreen from "./screens/Main_screen"
@@ -58,8 +58,8 @@ const App: FC = () => {
                 <Stack.Screen name="Register" component={RegisterScreen} options={{ headerShown: false }}></Stack.Screen>
                 <Stack.Screen name="Home" component={HomeScreen} ></Stack.Screen>
                 <Stack.Screen name="MainScreen" component={MainScreen} ></Stack.Screen>
-                <Stack.Screen name="DetailsScreen" component={DetailsScreen} ></Stack.Screen>
-                <Stack.Screen name="AddStudentScreen" component={AboutScreen} ></Stack.Screen>
+                <Stack.Screen name="Details" component={Details} ></Stack.Screen>
+                <Stack.Screen name="AddPost" component={AddPost} ></Stack.Screen>
                 <Stack.Screen name="AboutScreen" component={AboutScreen} options={{ headerShown: false }}></Stack.Screen>
             </Stack.Navigator>
         </NavigationContainer>

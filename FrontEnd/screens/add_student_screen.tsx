@@ -1,5 +1,6 @@
 import React, { FC, useState } from "react"
 import { View, Text, StyleSheet, Image, TextInput, TouchableHighlight, ScrollView } from "react-native"
+import { Button,Icon,Input,Divider } from '@rneui/themed';
 
 import COLORS from "../constants/colors"
 import StudnetModel, { Student } from "../model/student_model"
@@ -7,7 +8,7 @@ import ActivityIndicator from "./component/custom_activity_indicator"
 import CustomImagePicker from "./component/custom_image_picker"
 
 
-const AddStudent: FC<{ navigation: any, route: any }> = ({ navigation, route }) => {
+const AddPost: FC<{ navigation: any, route: any }> = ({ navigation, route }) => {
     const [id, setId] = useState<String>("")
     const [name, setName] = useState<String>("")
     const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -41,22 +42,39 @@ const AddStudent: FC<{ navigation: any, route: any }> = ({ navigation, route }) 
                 <View style={styles.image} >
                     <CustomImagePicker onImageSelected={onImageSelected}></CustomImagePicker>
                 </View>
-                <TextInput style={styles.textInput}
+                <Input style={styles.textInput}
                     onChangeText={setId}
                     placeholder="ID"
-                    keyboardType="default"></TextInput>
-                <TextInput style={styles.textInput}
+                    keyboardType="default"></Input>
+                <Input style={styles.textInput}
                     onChangeText={setName}
-                    placeholder="Name"
-                    keyboardType="default"></TextInput>
-                <TouchableHighlight
+                    placeholder="Write Something Nice"
+                    keyboardType="default"></Input>
+                {/*<TouchableHighlight
                     onPress={onSave}
                     underlayColor={COLORS.clickBackground}
                     style={styles.button}>
                     <Text style={styles.button_text}>Save</Text>
-                </TouchableHighlight>
+                </TouchableHighlight>*/}
+                    <Button
+                    title="POST"
+                    onPress={onSave}
+                    buttonStyle={{
+                    backgroundColor: 'black',
+                    borderWidth: 2,
+                    borderColor: 'white',
+                    borderRadius: 30,
+                }}
+                    containerStyle={{
+                    width: 300,
+                    marginHorizontal: 50,
+                    marginVertical: 30,
+                }}
+                    titleStyle={{ fontWeight: 'bold' }}
+                    />
                 <View style={styles.activity_indicator}>
                     <ActivityIndicator visible={isLoading}></ActivityIndicator>
+
                 </View>
             </View>
         </ScrollView>
@@ -76,18 +94,7 @@ const styles = StyleSheet.create({
         padding: 10,
         marginBottom: 10
     },
-    textInput: {
-        height: 40,
-        margin: 12,
-        borderWidth: 1,
-        padding: 10,
-        borderColor: 'grey'
-    },
-    button: {
-        margin: 12,
-        backgroundColor: 'grey',
-        borderRadius: 5
-    },
+
     button_text: {
         fontSize: 30,
         color: 'white',
@@ -104,4 +111,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default AddStudent
+export default AddPost
