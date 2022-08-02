@@ -104,7 +104,7 @@ const getUseremail = async (us : User) => {
             console.log("save failed " + res.problem)
         }
     }
-    }
+
 
 export default {
     getAllStudents,
