@@ -3,7 +3,6 @@ import mongoose from "mongoose";
 const userSchema = new mongoose.Schema({
   name:{
     type: String,
-    required: true,
 
   },
   email: {
@@ -17,6 +16,10 @@ const userSchema = new mongoose.Schema({
   },
   refreshToken: {
     type: String,
+  },
+  imageUrl:{
+    type: String,
+    required: false
   },
 });
 

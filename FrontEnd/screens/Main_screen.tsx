@@ -1,7 +1,7 @@
 import React, { FC, useState,useRef, useEffect } from "react";
 import { View, Text, StyleSheet, Button, Image, TouchableHighlight } from 'react-native'
 
-import { NavigationContainer } from "@react-navigation/native";
+import {NavigationContainer, NavigationProp} from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 
@@ -33,11 +33,14 @@ const ToBarAddButton:FC<{onClick:()=>void}>=({onClick})=>{
     )
 }
 
-const MainScreen: FC<{ navigation: any, route: any }> = ({ navigation, route }) => {
+const MainScreen: FC<{ navigation: NavigationProp<any,any>, route: any }> = ({ navigation, route }) => {
+   // const state = navigation.getState().routes.find((route: any) => route.name === 'MainScreen') as any;
+    //const user =state.params['user'];
     const openAddStudent = () => {
         navigation.navigate(AddPost)
     }
     return (
+
             <Tab.Navigator screenOptions={({route}) => ({
                 tabBarIcon: ({focused, color, size}) => {
                     let iconName;
@@ -58,6 +61,7 @@ const MainScreen: FC<{ navigation: any, route: any }> = ({ navigation, route }) 
                 tabBarActiveTintColor: 'tomato',
                 tabBarInactiveTintColor: 'black',
             })}>
+
                 <Tab.Screen name= "Home" component={HomeScreen} options={{
                     headerRight: ()=><ToBarAddButton onClick={()=>openAddStudent()}></ToBarAddButton>
                 }}></Tab.Screen>

@@ -8,8 +8,12 @@ export type Student = {
 export type User = {
     name: String,
     email: String,
-    password: String
+    password: String,
+    imageUrl: String
 }
+
+
+
 // Users
 
 const addUsers = async (us:User)=>{
@@ -48,5 +52,6 @@ export default {
     getUseremail,
     getUser,
     addUsers,
+    uploadImage,
 
 }

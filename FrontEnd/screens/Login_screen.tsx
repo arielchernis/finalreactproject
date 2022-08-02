@@ -2,7 +2,7 @@ import React,{FC, useState} from "react"
 import {View, Text} from "react-native"
 import COLORS from "../constants/colors"
 import { Button,Icon,Input,Divider } from '@rneui/themed';
-import StudnetModel, { User } from "../model/student_model"
+import  { User } from "../model/student_model"
 import Student_model from "../model/student_model";
 
 import MainScreen from "./Main_screen"
@@ -78,10 +78,9 @@ const Login: FC<{ navigation: any, route: any ,isLogin:boolean}> = ({ navigation
 
 
         if (result) {
-           navigation.navigate(MainScreen,{user:user})
+           navigation.navigate('MainScreen',{user: user})
            console.log(`i just logged in`);
-           //console.log(result);
-           console.log(res);
+
             setIsLoading(false);
 
 

@@ -75,20 +75,34 @@ const getUseremail = async (us : User) => {
     console.log("getUseremail")
     console.log("email:" + us.email)
 
-    const res  = await apiClient.get("/auth/users?email"+ us.email.toString(),{
+    const res = await apiClient.get("/auth/users?email" + us.email.toString(), {
         name: us.name,
         email: us.email,
         password: us.password
 
     })
-    if  (res.ok) {
+    if (res.ok) {
         console.log("getUser res.data " + res.data)
-        if (res.data){
-                console.log(us)
-               return us;
-            }
-        }else {
+        if (res.data) {
+            console.log(us)
+            return us;
+        }
+    } else {
         console.log("getUseremail fail")
+    }
+   }
+    const uploadImage = async (imageUri:String)=> {
+        console.log("uploadImage")
+        const formData = new FormData()
+        formData.append('file',{name: 'name', type:'image/jpeg', uri: imageUri})
+        let url = '/file/file'
+        const res = await apiClient.post(url,formData)
+        if (res.ok){
+            console.log("uploadImage passed " + res.data)
+            return res.data.url
+        }else{
+            console.log("save failed " + res.problem)
+        }
     }
     }
 
@@ -98,5 +112,6 @@ export default {
     addUsers,
     getUser,
     getUseremail,
-    //uploadImage
+    uploadImage
+
 }

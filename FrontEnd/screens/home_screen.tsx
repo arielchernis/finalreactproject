@@ -42,7 +42,7 @@ const Home: FC<{ navigation: NavigationProp<any,any>, route: any }> = ({ navigat
     const [data, setData] = useState<Array<Student>>()
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
-
+  // const user = await StudentModel.getUseremail()
 
 
     const openDetails = (id:String)=>{
@@ -68,22 +68,7 @@ const Home: FC<{ navigation: NavigationProp<any,any>, route: any }> = ({ navigat
 
     return (
         <View style={styles.home_container}>
-            <Button
-                title="GET USER"
-                onPress={onPost}
-                buttonStyle={{
-                    backgroundColor: 'black',
-                    borderWidth: 2,
-                    borderColor: 'white',
-                    borderRadius: 30,
-                }}
-                containerStyle={{
-                    width: 200,
-                    marginHorizontal: 50,
-                    marginVertical: 10,
-                }}
-                titleStyle={{ fontWeight: 'bold' }}
-            />
+
             <FlatList
                 data={data}
                 keyExtractor={item => item.id.toString()}

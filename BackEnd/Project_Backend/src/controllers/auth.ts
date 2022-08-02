@@ -44,9 +44,10 @@ const register = async (req: Request, res: Response) => {
   const encryptedPassword = await bcrypt.hash(password, salt);
 
   const user = new User({
-    name: name,
+    name: "",
     email: email,
     password: encryptedPassword,
+    imageUrl: "",
   });
   try {
     const newUser = await user.save();
@@ -95,7 +96,7 @@ const getUsers = async (req: Request, res: Response) => {
 
   try {
     const email = req.query.email;
-    const name = req.query.name;
+
     let users;
     if (email != null || email != undefined) {
       users = await User.find({ email: email});
