@@ -12,7 +12,9 @@ export type User = {
 }
 // Users
 const addUsers = async (us:User)=>{
-    await StudentApi.addUsers(us)
+
+    const res = await StudentApi.addUsers(us)
+    return res
 }
 const getUser = async (us:User)=>{
     const user = await StudentApi.getUser(us)
@@ -21,6 +23,7 @@ const getUser = async (us:User)=>{
 // Students
 const getAllStudents = async ()=>{
     const students = await StudentApi.getAllStudents()
+
     return students
 } 
 

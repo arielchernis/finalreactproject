@@ -46,8 +46,10 @@ const addUsers = async (us: User) => {
     })
     if (res.ok) {
         console.log("addUser success")
+        return true
     } else {
         console.log("addUSer fail")
+        return  false
     }
 }
 const getUser = async (us: User) => {
