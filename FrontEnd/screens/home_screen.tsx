@@ -8,7 +8,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import {createMaterialTopTabNavigator} from "@react-navigation/material-top-tabs";
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, NavigationProp } from "@react-navigation/native";
 import Details from "./details_screen";
 import AddStudent from "./add_student_screen";
 import {Button} from "@rneui/themed";
@@ -38,7 +38,7 @@ const StudentListRow: FC<{ student: Student, onItemClick: (id:String)=>void }> =
     )
 }
 
-const Home: FC<{ navigation: any, route: any }> = ({ navigation, route }) => {
+const Home: FC<{ navigation: NavigationProp<any,any>, route: any }> = ({ navigation, route }) => {
     const [data, setData] = useState<Array<Student>>()
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
@@ -47,7 +47,7 @@ const Home: FC<{ navigation: any, route: any }> = ({ navigation, route }) => {
 
     const openDetails = (id:String)=>{
         console.log("on press " + id)
-        navigation.navigate(Details, {id: id})
+        navigation.navigate('Details', { id: id })
     }
     const onPost = () => {
 
