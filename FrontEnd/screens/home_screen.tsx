@@ -9,7 +9,7 @@ import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import {createMaterialTopTabNavigator} from "@react-navigation/material-top-tabs";
 import { NavigationContainer } from "@react-navigation/native";
-import DetailsScreen from "./details_screen";
+import Details from "./details_screen";
 import AddStudent from "./add_student_screen";
 import {Button} from "@rneui/themed";
 
@@ -41,16 +41,16 @@ const StudentListRow: FC<{ student: Student, onItemClick: (id:String)=>void }> =
 const Home: FC<{ navigation: any, route: any }> = ({ navigation, route }) => {
     const [data, setData] = useState<Array<Student>>()
     const [isLoading, setIsLoading] = useState<boolean>(false)
-    const user = route.params
-    const username = StudentModel.getUserName(user)
+
+
 
 
     const openDetails = (id:String)=>{
         console.log("on press " + id)
-        navigation.navigate(DetailsScreen, {id: id})
+        navigation.navigate(Details, {id: id})
     }
     const onPost = () => {
-        navigation.navigate(AddStudent)
+
     }
 
     useEffect(()=>{
@@ -68,11 +68,26 @@ const Home: FC<{ navigation: any, route: any }> = ({ navigation, route }) => {
 
     return (
         <View style={styles.home_container}>
-
+            <Button
+                title="GET USER"
+                onPress={onPost}
+                buttonStyle={{
+                    backgroundColor: 'black',
+                    borderWidth: 2,
+                    borderColor: 'white',
+                    borderRadius: 30,
+                }}
+                containerStyle={{
+                    width: 200,
+                    marginHorizontal: 50,
+                    marginVertical: 10,
+                }}
+                titleStyle={{ fontWeight: 'bold' }}
+            />
             <FlatList
                 data={data}
                 keyExtractor={item => item.id.toString()}
-                renderItem={({ item }) => (<StudentListRow student={item} 
+                renderItem={({ item }) => (<StudentListRow student={item}
                             onItemClick={openDetails} />)}
             ></FlatList>
             <View style={styles.activity_indicator}>

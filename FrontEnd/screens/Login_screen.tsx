@@ -10,6 +10,7 @@ import Register_screen from "./Register_screen"
 import Home from "./home_screen";
 
 import * as Facebook from 'expo-facebook'
+import StudentModel from "../model/student_model";
 
 
 
@@ -71,7 +72,7 @@ const Login: FC<{ navigation: any, route: any ,isLogin:boolean}> = ({ navigation
             password: password
 
         }
-        console.log(user)
+
 
         let result = await Student_model.getUser(user);
 
@@ -79,11 +80,9 @@ const Login: FC<{ navigation: any, route: any ,isLogin:boolean}> = ({ navigation
         if (result) {
            navigation.navigate(MainScreen,{user:user})
            console.log(`i just logged in`);
-           console.log(result);
+           //console.log(result);
+           console.log(res);
             setIsLoading(false);
-           /* await Credentials.setCredentials(result);
-            dispatch(AuthActions.setUserToken(result));
-            dispatch(AuthActions.setIsLoggedIn(true));*/
 
 
 

@@ -53,8 +53,8 @@ const addUsers = async (us: User) => {
         return  false
     }
 }
-const getUserName =async (us: User) => {
-    console.log("getUserName")
+const getUser =async (us: User) => {
+    console.log("User Login")
     const res = await apiClient.post("/auth/login",{
         name: us.name,
         email: us.email,
@@ -71,9 +71,11 @@ const getUserName =async (us: User) => {
         console.log("getUser fail")
     }
 }
-const getUser = async (us: User) => {
-    console.log("getUser")
-    const res = await apiClient.post("/auth/login",{
+const getUseremail = async (us : User) => {
+    console.log("getUseremail")
+    console.log("email:" + us.email)
+
+    const res  = await apiClient.get("/auth/users?email"+ us.email.toString(),{
         name: us.name,
         email: us.email,
         password: us.password
@@ -82,11 +84,11 @@ const getUser = async (us: User) => {
     if  (res.ok) {
         console.log("getUser res.data " + res.data)
         if (res.data){
-
+                console.log(us)
                return us;
             }
         }else {
-        console.log("getUser fail")
+        console.log("getUseremail fail")
     }
     }
 
@@ -94,7 +96,7 @@ export default {
     getAllStudents,
     addStudents,
     addUsers,
-    getUser
-
+    getUser,
+    getUseremail,
     //uploadImage
 }

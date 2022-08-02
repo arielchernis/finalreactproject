@@ -11,10 +11,7 @@ export type User = {
     password: String
 }
 // Users
-const getUserName = async (us:User)=> {
-    const res = await StudentApi.getUserName(us)
-    return res
-}
+
 const addUsers = async (us:User)=>{
 
     const res = await StudentApi.addUsers(us)
@@ -22,6 +19,10 @@ const addUsers = async (us:User)=>{
 }
 const getUser = async (us:User)=>{
     const user = await StudentApi.getUser(us)
+    return user
+}
+const getUseremail = async (us:User)=>{
+    const user = await StudentApi.getUseremail(us)
     return user
 }
 // Students posts
@@ -44,7 +45,8 @@ export default {
     addStudents,
     getAllStudents,
     uploadImage,
-    addUsers,
+    getUseremail,
     getUser,
-    getUserName
+    addUsers,
+
 }
