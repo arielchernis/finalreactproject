@@ -1,4 +1,9 @@
+GET http://localhost:3000/auth/users
+Accept: application/json
 
+###
+GET http://localhost:3000/auth/users?email=a@a.com
+Accept: application/jso
 ###
 
 GET http://localhost:3000/post
@@ -6,7 +11,7 @@ GET http://localhost:3000/post
 ###
 
 
-GET http://localhost:3000/post?sender=eliav2
+GET http://localhost:3000/post?sender=me
 
 ###
 
@@ -29,7 +34,8 @@ POST http://localhost:3000/auth/register
 Content-Type: application/json
 
 {
-    "email" : "t2t@t.com",
+    "name" : "a",
+    "email" : "a@t.com",
     "password" : "222222"
 }
 
@@ -40,7 +46,7 @@ POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-    "email" : "t2t@t.com",
+    "email" : "a@t.com",
     "password" : "222222"
 }
 

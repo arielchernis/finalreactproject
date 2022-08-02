@@ -74,8 +74,10 @@ const Login: FC<{ navigation: any, route: any ,isLogin:boolean}> = ({ navigation
         console.log(user)
 
         let result = await Student_model.getUser(user);
+
+
         if (result) {
-           navigation.navigate(MainScreen)
+           navigation.navigate(MainScreen,{user:user})
            console.log(`i just logged in`);
            console.log(result);
             setIsLoading(false);

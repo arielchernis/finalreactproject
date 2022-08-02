@@ -3,6 +3,7 @@ import { Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import Post from "../models/post_model";
 
 const generateTokens = (userId: string): [string, string] => {
   const accessToken = jwt.sign(
@@ -25,6 +26,7 @@ const generateTokens = (userId: string): [string, string] => {
 const register = async (req: Request, res: Response) => {
   console.log("register");
   //validate email/password
+  const name = req.body.name;
   const email = req.body.email;
   const password = req.body.password;
 
@@ -42,6 +44,7 @@ const register = async (req: Request, res: Response) => {
   const encryptedPassword = await bcrypt.hash(password, salt);
 
   const user = new User({
+    name: name,
     email: email,
     password: encryptedPassword,
   });
@@ -66,6 +69,46 @@ const register = async (req: Request, res: Response) => {
  * @param {http req} req
  * @param {http res} res
  */
+const name = async (req : Request,res : Response) => {
+  console.log("getname")
+  const name = req.params.name;
+  console.log("name:" +name)
+  if (name == null) {
+    return res
+        .status(StatusCodes.BAD_REQUEST)
+        .send({error: "wrong name 1"});
+  }
+  try {
+    // check password match
+    const user = await User.findOne({name: name});
+    if (user == null) {
+      return res
+          .status(StatusCodes.BAD_REQUEST)
+          .send({error: "wrong name 2"});
+    }
+  }catch(err){
+    return res.status(StatusCodes.BAD_REQUEST).send({error: err.message});
+  }
+}
+const getUsers = async (req: Request, res: Response) => {
+  console.log("getUsers");
+
+  try {
+    const email = req.query.email;
+    const name = req.query.name;
+    let users;
+    if (email != null || email != undefined) {
+      users = await User.find({ email: email});
+    } else {
+      users = await User.find();
+    }
+    res.status(200).send(users);
+  } catch (err) {
+    res.status(400).send({
+      err: err.message,
+    });
+  }
+};
 const login = async (req: Request, res: Response) => {
   console.log("login");
   const email = req.body.email;
@@ -172,4 +215,6 @@ export = {
   login,
   renewToken,
   test,
+  name,
+  getUsers,
 };

@@ -41,6 +41,9 @@ const StudentListRow: FC<{ student: Student, onItemClick: (id:String)=>void }> =
 const Home: FC<{ navigation: any, route: any }> = ({ navigation, route }) => {
     const [data, setData] = useState<Array<Student>>()
     const [isLoading, setIsLoading] = useState<boolean>(false)
+    const user = route.params
+    const username = StudentModel.getUserName(user)
+
 
     const openDetails = (id:String)=>{
         console.log("on press " + id)

@@ -41,6 +41,7 @@ const addStudents = async (st: Student) => {
 
 const addUsers = async (us: User) => {
     const res = await apiClient.post("/auth/register", {
+        name: us.name,
         email: us.email,
         password: us.password
     })
@@ -52,10 +53,28 @@ const addUsers = async (us: User) => {
         return  false
     }
 }
+const getUserName =async (us: User) => {
+    console.log("getUserName")
+    const res = await apiClient.post("/auth/login",{
+        name: us.name,
+        email: us.email,
+        password: us.password
+
+    })
+    if  (res.ok) {
+        console.log("getUser res.data " + res.data)
+        if (res.data){
+
+            return us;
+        }
+    }else {
+        console.log("getUser fail")
+    }
+}
 const getUser = async (us: User) => {
     console.log("getUser")
     const res = await apiClient.post("/auth/login",{
-        name: "",
+        name: us.name,
         email: us.email,
         password: us.password
 
