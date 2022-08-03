@@ -1,4 +1,4 @@
-import { FC, useRef } from "react"
+import React, { FC, useRef } from "react"
 import LottieView from "lottie-react-native"
 
 const ActivityIndicator: FC<{ visible: boolean }> = ({ visible }) => {

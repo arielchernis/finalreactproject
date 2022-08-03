@@ -17,7 +17,7 @@ const AddPost: FC<{ navigation: any, route: any }> = ({ navigation, route }) => 
     const onSave = async () => {
         setIsLoading(true)
         var student: Student = {
-            id: id,
+            id: "me",
             name: name,
             imageUrl: ''
         }
