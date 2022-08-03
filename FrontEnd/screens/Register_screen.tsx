@@ -25,7 +25,8 @@ const Register: FC<{ navigation: any, route: any }> = ({ navigation, route }) =>
         let user: User = {
             name: name,
             email: email,
-            password: password
+            password: password,
+            imageUrl: "",
 
         }
 
@@ -35,9 +36,7 @@ const Register: FC<{ navigation: any, route: any }> = ({ navigation, route }) =>
             console.log(`i just Registered`);
             console.log(register);
             setIsLoading(false);
-            /* await Credentials.setCredentials(result);
-             dispatch(AuthActions.setUserToken(result));
-             dispatch(AuthActions.setIsLoggedIn(true));*/
+
 
 
 

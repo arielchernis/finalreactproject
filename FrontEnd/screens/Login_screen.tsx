@@ -18,6 +18,7 @@ const Login: FC<{ navigation: any, route: any ,isLogin:boolean}> = ({ navigation
     const [isLoading, setIsLoading] = useState<boolean>(true)
     const [email, setEmail] = useState<string>("")
     const [password, setPassword] = useState<string>("")
+    const [name, setName] = useState<string>("")
 
     const [isLoggedin,setLoggedinStatus] = useState(false)
     const [userData, SetUserDate] = useState(null)
@@ -67,9 +68,10 @@ const Login: FC<{ navigation: any, route: any ,isLogin:boolean}> = ({ navigation
 
         setIsLoading(true)
         let user: User = {
-            name:"",
+            name: "",
             email: email,
-            password: password
+            password: password,
+            imageUrl: ""
 
         }
 
@@ -78,7 +80,7 @@ const Login: FC<{ navigation: any, route: any ,isLogin:boolean}> = ({ navigation
 
 
         if (result) {
-           navigation.navigate('MainScreen',{user: user})
+           navigation.navigate('MainScreen',{user: result})
            console.log(`i just logged in`);
 
             setIsLoading(false);

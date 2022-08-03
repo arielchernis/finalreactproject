@@ -11,10 +11,10 @@ import 'react-native-gesture-handler';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 import HomeScreen from "./screens/home_screen";
-import AboutScreen from "./screens/about_screen";
+import AboutScreen from "./screens/Profile_screen";
 import Details from "./screens/details_screen";
 import AddPost from "./screens/add_student_screen";
-import LoginScreen from "./screens/Login_screen";
+import Login from "./screens/Login_screen";
 import RegisterScreen from "./screens/Register_screen";
 import MainScreen from "./screens/Main_screen"
 import COLORS from "./constants/colors";
@@ -54,9 +54,9 @@ const App: FC = () => {
                 tabBarActiveTintColor: 'tomato',
                 tabBarInactiveTintColor: 'gray',
             })}>
-                <Stack.Screen name="Log-in" component = {LoginScreen}  options={{ headerShown: false }}></Stack.Screen>
+                <Stack.Screen name="Login" component = {Login}  options={{ headerShown: false }}></Stack.Screen>
                 <Stack.Screen name="Register" component={RegisterScreen} options={{ headerShown: false }}></Stack.Screen>
-                <Stack.Screen name="Home" component={HomeScreen} ></Stack.Screen>
+                <Stack.Screen name="Home" component={HomeScreen}  ></Stack.Screen>
                 <Stack.Screen name="MainScreen" component={MainScreen} ></Stack.Screen>
                 <Stack.Screen name="Details" component={Details} ></Stack.Screen>
                 <Stack.Screen name="AddPost" component={AddPost} ></Stack.Screen>

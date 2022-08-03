@@ -1,11 +1,6 @@
 import React, {FC} from "react";
 import { View, Text, StyleSheet, Button, Image, TouchableHighlight, TextInput, ImageBackground } from 'react-native'
-import Ionicons from "@expo/vector-icons/Ionicons";
-import HomeScreen from "./home_screen";
-import AboutScreen from "./about_screen";
-import {WebView} from "react-native-webview"
 
-import { AutoScrollFlatList } from "react-native-autoscroll-flatlist";
 
 //<WebView source = {{uri: "https://tawk.to/chat/62e7fbd254f06e12d88c59e3/1g9d2vbug"}} />
 const ChatScreen: FC<{ navigation: any, route: any }> = ({ navigation, route }) => {
@@ -18,9 +13,9 @@ const ChatScreen: FC<{ navigation: any, route: any }> = ({ navigation, route }) 
             source={require("../assets/88570e500312820cf8873d180d05f0c0.jpg")}
             resizeMode="cover"
             style={{ flex: 1, justifyContent: "center" }}>
-            
-            
-      
+
+
+
           <View style={{ flexDirection: "row" }}>
             <TextInput
               style={styles.textInput}
@@ -52,16 +47,16 @@ const styles = StyleSheet.create({
       paddingRight: "20px",
       backgroundColor: "#ffffff",
     },
-  
+
     userInfo: {
       flexDirection: "row",
       justifyContent: "space-between",
-      
+
     },
     userImageWrapper: {
       paddingBottom: 15,
       paddingTop: 15,
-      
+
     },
     userImage: {
       width: 50,
@@ -92,7 +87,7 @@ const styles = StyleSheet.create({
       fontSize: 14,
       color: "#333333",
     },
-  
+
     textInput: {
       color:"white",
       height: 60,
@@ -115,7 +110,7 @@ const styles = StyleSheet.create({
       color: "white",
       textAlign: "center",
     },
-  
+
     self_list_row_text_container: {
       backgroundColor: "#005c4b",
       borderRadius: 20,

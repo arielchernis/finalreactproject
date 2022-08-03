@@ -1,6 +1,6 @@
 import React, { FC, useState } from "react"
-import { View, Text, StyleSheet, Image, TextInput, TouchableHighlight, ScrollView } from "react-native"
-import { Button,Icon,Input,Divider } from '@rneui/themed';
+import { View,  StyleSheet, Image, TextInput, TouchableHighlight, ScrollView } from "react-native"
+import { Button,Icon,Input,Divider,Text } from '@rneui/themed';
 
 import COLORS from "../constants/colors"
 import StudnetModel, { Student } from "../model/student_model"
@@ -42,10 +42,7 @@ const AddPost: FC<{ navigation: any, route: any }> = ({ navigation, route }) => 
                 <View style={styles.image} >
                     <CustomImagePicker onImageSelected={onImageSelected}></CustomImagePicker>
                 </View>
-                <Input style={styles.textInput}
-                    onChangeText={setId}
-                    placeholder="ID"
-                    keyboardType="default"></Input>
+
                 <Input style={styles.textInput}
                     onChangeText={setName}
                     placeholder="Write Something Nice"

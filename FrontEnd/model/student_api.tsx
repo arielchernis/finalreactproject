@@ -56,6 +56,7 @@ const addUsers = async (us: User) => {
 const getUser =async (us: User) => {
     console.log("User Login")
     const res = await apiClient.post("/auth/login",{
+
         name: us.name,
         email: us.email,
         password: us.password
@@ -65,32 +66,49 @@ const getUser =async (us: User) => {
         console.log("getUser res.data " + res.data)
         if (res.data){
 
-            return us;
+
+            const user: User = {
+                name: res.data.name,
+                email: res.data.email,
+                password: res.data.password,
+                imageUrl: res.data.imgUrl,
+            }
+            return user
         }
     }else {
         console.log("getUser fail")
     }
 }
-const getUseremail = async (us : User) => {
+const getUseremail = async (email: String) => {
+
     console.log("getUseremail")
-    console.log("email:" + us.email)
 
-    const res = await apiClient.get("/auth/users?email" + us.email.toString(), {
-        name: us.name,
-        email: us.email,
-        password: us.password
 
-    })
+    const res = await apiClient.get("/auth/users?email" + email.toString())
+
     if (res.ok) {
         console.log("getUser res.data " + res.data)
         if (res.data) {
-            console.log(us)
-            return us;
+            console.log("getUser res.data " + res.data)
+            console.log("Name:" + res.data.name)
+            console.log("Email:" + res.data.email)
+            console.log("passwprd:" + res.data.password)
+            const user: User = {
+                name: res.data.name,
+                email: res.data.email,
+                password: res.data.password,
+                imageUrl: res.data.imgUrl,
+            }
+            return user
         }
-    } else {
-        console.log("getUseremail fail")
+        } else {
+            console.log("getUseremail fail")
+        }
+
+
+
     }
-   }
+
     const uploadImage = async (imageUri:String)=> {
         console.log("uploadImage")
         const formData = new FormData()
@@ -100,7 +118,8 @@ const getUseremail = async (us : User) => {
         if (res.ok){
             console.log("uploadImage passed " + res.data)
             return res.data.url
-        }else{
+        }
+        else{
             console.log("save failed " + res.problem)
         }
     }

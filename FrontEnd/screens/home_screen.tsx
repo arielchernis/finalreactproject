@@ -42,16 +42,13 @@ const Home: FC<{ navigation: NavigationProp<any,any>, route: any }> = ({ navigat
     const [data, setData] = useState<Array<Student>>()
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
-  // const user = await StudentModel.getUseremail()
 
 
     const openDetails = (id:String)=>{
         console.log("on press " + id)
         navigation.navigate('Details', { id: id })
     }
-    const onPost = () => {
 
-    }
 
     useEffect(()=>{
         navigation.addListener('focus',()=>{

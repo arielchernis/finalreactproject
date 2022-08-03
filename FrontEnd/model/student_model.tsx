@@ -25,8 +25,8 @@ const getUser = async (us:User)=>{
     const user = await StudentApi.getUser(us)
     return user
 }
-const getUseremail = async (us:User)=>{
-    const user = await StudentApi.getUseremail(us)
+const getUseremail = async (email : String)=>{
+    const user = await StudentApi.getUseremail(email)
     return user
 }
 // Students posts

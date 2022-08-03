@@ -44,7 +44,7 @@ const register = async (req: Request, res: Response) => {
   const encryptedPassword = await bcrypt.hash(password, salt);
 
   const user = new User({
-    name: "",
+    name: name,
     email: email,
     password: encryptedPassword,
     imageUrl: "",
@@ -113,6 +113,7 @@ const getUsers = async (req: Request, res: Response) => {
 const login = async (req: Request, res: Response) => {
   console.log("login");
   const email = req.body.email;
+  const name = req.body.name;
   const password = req.body.password;
   if (email == null || password == null) {
     return res
