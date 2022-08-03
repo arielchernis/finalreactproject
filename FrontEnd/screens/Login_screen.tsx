@@ -1,4 +1,4 @@
-import React,{FC, useState} from "react"
+import React, {FC, useRef, useState} from "react"
 import {View, Text} from "react-native"
 import COLORS from "../constants/colors"
 import { Button,Icon,Input,Divider } from '@rneui/themed';
@@ -11,6 +11,7 @@ import Home from "./home_screen";
 
 import * as Facebook from 'expo-facebook'
 import StudentModel from "../model/student_model";
+import LottieView from "lottie-react-native"
 
 
 
@@ -19,7 +20,7 @@ const Login: FC<{ navigation: any, route: any ,isLogin:boolean}> = ({ navigation
     const [email, setEmail] = useState<string>("")
     const [password, setPassword] = useState<string>("")
     const [name, setName] = useState<string>("")
-
+    const animation = useRef(null);
     const [isLoggedin,setLoggedinStatus] = useState(false)
     const [userData, SetUserDate] = useState(null)
     const [isImageLoading,setImageLoadStatus] = useState(false)
@@ -164,6 +165,17 @@ const Login: FC<{ navigation: any, route: any ,isLogin:boolean}> = ({ navigation
             />
 
 
+            <LottieView
+                autoPlay
+                loop
+                source={require("./Animations/facebook.json")}
+                ref={animation}
+                style={{
+                    width: 100,
+                    height: 100,
+                }}
+
+            ></LottieView>
 
 
         </View>

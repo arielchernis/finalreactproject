@@ -10,7 +10,7 @@ const ActivityIndicator: FC<{ visible: boolean }> = ({ visible }) => {
             <LottieView
                 autoPlay
                 loop
-                source={require("../../animations/paperplane.json")}
+                source={require("../../animations/toaster.json")}
                 ref={animation}
                 style={{
                     width: 400,
