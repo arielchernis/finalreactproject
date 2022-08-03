@@ -1,8 +1,9 @@
 import StudentApi from "./student_api"
 
 export type Student = {
+
     id: String,
-    name:String,
+    name: String,
     imageUrl: String
 }
 export type User = {
@@ -44,6 +45,10 @@ const uploadImage = async (imageUri:String)=> {
     const url = await StudentApi.uploadImage(imageUri)
     return url
 }
+const deletePost = async (name : String) => {
+    const res = await StudentApi.deletePost(name)
+    return res
+}
 
 export default {
     addStudents,
@@ -53,5 +58,6 @@ export default {
     getUser,
     addUsers,
     uploadImage,
+    deletePost
 
 }

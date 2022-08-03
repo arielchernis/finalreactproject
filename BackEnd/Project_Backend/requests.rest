@@ -11,12 +11,16 @@ GET http://localhost:3000/post
 ###
 
 
-GET http://localhost:3000/post?sender=me
+GET http://localhost:3000/post?sender=ariel
 
 ###
 
 GET http://localhost:3000/post/62260bf39f8f7ff5c48ded71
+###
+DELETE http://localhost:3000/post/62eab0bbe583407fda499029
 
+###
+DELETE http://localhost:3000/post/ariel
 
 ###
 
@@ -24,8 +28,9 @@ POST http://localhost:3000/post
 Content-Type: application/json
 
 {
-    "message" : "this is my first message",
-    "sender" : "eliav2"
+    "message" : "this is my sec message",
+    "sender" : "ariel",
+     "imageUrl": ""
 }
 
 ###

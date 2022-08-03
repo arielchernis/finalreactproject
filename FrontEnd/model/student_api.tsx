@@ -89,10 +89,7 @@ const getUseremail = async (email: String) => {
     if (res.ok) {
         console.log("getUser res.data " + res.data)
         if (res.data) {
-            console.log("getUser res.data " + res.data)
-            console.log("Name:" + res.data.name)
-            console.log("Email:" + res.data.email)
-            console.log("passwprd:" + res.data.password)
+
             const user: User = {
                 name: res.data.name,
                 email: res.data.email,
@@ -104,10 +101,19 @@ const getUseremail = async (email: String) => {
         } else {
             console.log("getUseremail fail")
         }
-
-
-
     }
+const deletePost = async (name: String) => {
+    const res = await apiClient.delete("/post/"+name)
+    if (res.ok) {
+        console.log(name + "post deleted ");
+        return true;
+    } else {
+        console.log(res.data);
+
+        console.log("delete post fail");
+        return false;
+    }
+};
 
     const uploadImage = async (imageUri:String)=> {
         console.log("uploadImage")
@@ -131,6 +137,7 @@ export default {
     addUsers,
     getUser,
     getUseremail,
-    uploadImage
+    uploadImage,
+    deletePost
 
 }

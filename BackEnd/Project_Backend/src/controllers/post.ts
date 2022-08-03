@@ -82,15 +82,33 @@ export const createNewPost = async (req: Request | CtrlReq, res: Response | Ctrl
 
 export const deletePostById = async (req: Request, res: Response) => {
   console.log("deletePostById id=" + req.params.id);
-  const id = req.params.id;
+  const id = req.params.id
   if (id == null || id == undefined) {
     return res.status(400).send({ err: "no id provided" });
   }
-
   try {
     await Post.deleteOne({ _id: id });
     res.status(200).send();
+
   } catch (err) {
+    res.status(400).send({
+      err: err.message,
+    });
+  }
+};
+export const deletePostBySender = async (req: Request, res: Response) => {
+  console.log("deletePostBySender sender=" + req.params.message);
+  const message = req.params.message;
+
+  if (message == null || message == undefined) {
+    return res.status(400).send({ err: "no user provided" });
+  }
+  try {
+    await Post.deleteOne({message: message });
+    console.log("Post Deleted"+ message)
+    res.status(200).send();
+  } catch (err) {
+    console.log("Post Deleted Fail"+ message)
     res.status(400).send({
       err: err.message,
     });

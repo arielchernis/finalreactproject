@@ -68,7 +68,7 @@ const Login: FC<{ navigation: any, route: any ,isLogin:boolean}> = ({ navigation
 
         setIsLoading(true)
         let user: User = {
-            name: "",
+            name: name,
             email: email,
             password: password,
             imageUrl: ""

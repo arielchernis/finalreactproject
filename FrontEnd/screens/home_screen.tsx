@@ -21,10 +21,10 @@ const UpperTab = createMaterialTopTabNavigator();
 const BotTab = createBottomTabNavigator()
 
 
-const StudentListRow: FC<{ student: Student, onItemClick: (id:String)=>void }> = ({ student, onItemClick }) => {
+const StudentListRow: FC<{ student: Student, onItemClick: (name:String)=>void }> = ({ student, onItemClick }) => {
     return (
         <TouchableHighlight
-            onPress={()=>{onItemClick(student.id)}}
+            onPress={()=>{onItemClick(student.name)}}
             underlayColor={COLORS.clickBackground}>
             <View style={styles.list_row_container}>
                 { student?.imageUrl != "" &&  <Image source={{uri: student.imageUrl.toString()}} style={styles.list_row_image}></Image>}
@@ -44,9 +44,9 @@ const Home: FC<{ navigation: NavigationProp<any,any>, route: any }> = ({ navigat
 
 
 
-    const openDetails = (id:String)=>{
-        console.log("on press " + id)
-        navigation.navigate('Details', { id: id })
+    const openDetails = (name:String)=>{
+        console.log("on press " + name)
+        navigation.navigate('Details', { name: name })
     }
 
 
@@ -68,7 +68,7 @@ const Home: FC<{ navigation: NavigationProp<any,any>, route: any }> = ({ navigat
 
             <FlatList
                 data={data}
-                keyExtractor={item => item.id.toString()}
+                keyExtractor={item => item.name.toString()}
                 renderItem={({ item }) => (<StudentListRow student={item}
                             onItemClick={openDetails} />)}
             ></FlatList>
