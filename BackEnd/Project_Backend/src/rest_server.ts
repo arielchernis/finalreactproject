@@ -3,7 +3,7 @@ const app = express();
 import dotenv from "dotenv";
 dotenv.config();
 
-console.log("seerver is starting..");
+console.log("server is starting..");
 
 import mongoose from "mongoose";
 mongoose.connect(process.env.DATABASE_URL);
