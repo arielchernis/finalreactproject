@@ -27,6 +27,7 @@ export const initSocketServer =  async (server: http.Server): Promise<Server> =>
     await pubClient.connect()
     await subClient.connect() 
     socketServer.adapter(createAdapter(pubClient, subClient));
+    console.log("Server is initilazing...")
 /*
     socketServer.use(async (socket, next) => {
         let token = socket.handshake.auth.token;

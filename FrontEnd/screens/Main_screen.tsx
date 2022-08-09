@@ -44,7 +44,7 @@ const MainScreen: FC<{ navigation: NavigationProp<any,any>, route: any }> = ({ n
     const state = navigation.getState().routes.find((route: any) => route.name === 'MainScreen') as any;
     const user = state.params['user'];
     const name = user;
-
+    console.log("This is the user provided: " + user.toString())
 
 
 

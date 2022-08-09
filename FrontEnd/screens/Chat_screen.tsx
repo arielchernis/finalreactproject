@@ -21,6 +21,7 @@ type MessageListRowProps = {
 
 
   const MessageListRow: FC<MessageListRowProps> = ({ message, currentUser }) => {
+    console.log("The message is: " + message + 'Current user is: ' + currentUser)
     return (
       <View
         style={[
@@ -50,7 +51,6 @@ type MessageListRowProps = {
     );
   };
 
-//<WebView source = {{uri: "https://tawk.to/chat/62e7fbd254f06e12d88c59e3/1g9d2vbug"}} />
 const ChatScreen: FC<{ navigation: any, route: any }> = ({ navigation, route }) => {
 
     const [messages, setMessages] = useState<Array<messageType>>([]);
@@ -61,8 +61,9 @@ const ChatScreen: FC<{ navigation: any, route: any }> = ({ navigation, route }) 
     const date = new Date();
 
     const getUserData = async (email: String) => {
-      //const userProfile = StudnetModel.getUserProfile(email);
-      const userProfile = 'abcd'
+      const userProfile = StudnetModel.getUseremail('abcd');
+      console.log("the user currently on the model is" + userProfile)
+      //const userProfile = 'abcd'
       return userProfile;
     };
     const waitForDataLoad = async () => {
@@ -71,7 +72,7 @@ const ChatScreen: FC<{ navigation: any, route: any }> = ({ navigation, route }) 
     };
 
     useEffect(() => {
-        waitForDataLoad();
+        //waitForDataLoad();
         socketRef.current = io("http://192.168.0.219:3000", {
           
         });
@@ -82,7 +83,7 @@ const ChatScreen: FC<{ navigation: any, route: any }> = ({ navigation, route }) 
         socketRef.current?.on("ims:message_to_all", (message: messageType) => {
           setMessages((oldMessages) => [...oldMessages, message]);
           console.log(
-            `got this message: ${message.message} on time: ${message.time}, from: ${message.from}`
+            `got this message: ${message.message} on time: ${message.time},`
           );
         });
     
@@ -92,12 +93,14 @@ const ChatScreen: FC<{ navigation: any, route: any }> = ({ navigation, route }) 
       }, []);
 
     const onSendMessage = () => {
+      console.log("The message: " + messageInput)
         if (!messageInput) return;
+        console.log("im here number 2")
         socketRef.current?.emit("message", {
           message: messageInput,
-          //time: date.toLocaleTimeString(),
-          //from: userToken!.email,
-          //imgUrl: profile.imageUrl,
+          time: date.toLocaleTimeString(),
+          from: 'abcd',
+          imgUrl: profile.imageUrl,
         });
       };
 
@@ -129,7 +132,6 @@ const ChatScreen: FC<{ navigation: any, route: any }> = ({ navigation, route }) 
             ></TextInput>
             <TouchableHighlight
               onPress={onSendMessage}
-              //underlayColor={COLORS.clickBackground}
               style={styles.button}
             >
               <Text style={styles.button_text}>Send</Text>

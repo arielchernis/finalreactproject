@@ -114,7 +114,33 @@ router.post("/register", Auth.register);
 router.post("/login", Auth.login);
 
 //router.get("/:name",Auth.name)
+
+
+/**
+ * @swagger
+ * /auth/getUsers:
+ *   get:
+ *     summary: returns user by mail
+ *     tags: [Auth]
+ *     responses:
+ *       200:
+ *         description: success retuns the user that was requested with the Email
+ *         content:
+ *           application/json:
+ *             schema:
+ *               email:
+ *                 type: string
+ *                 description: the email of the user
+ *             example:
+ *               email: "abcd"
+ *
+ */
 router.get("/users",Auth.getUsers)
+
+
+
+
+
 /**
  * @swagger
  * /auth/refresh:
