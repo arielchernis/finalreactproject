@@ -11,7 +11,7 @@ GET http://localhost:3000/post
 ###
 
 
-GET http://localhost:3000/post?sender=ariel
+GET http://localhost:3000/post?sender=me
 
 ###
 
@@ -28,8 +28,8 @@ POST http://localhost:3000/post
 Content-Type: application/json
 
 {
-    "message" : "this is my sec message",
-    "sender" : "ariel",
+    "message" : "FAIL",
+    "sender" : "Dr. Tankos",
      "imageUrl": ""
 }
 

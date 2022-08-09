@@ -16,27 +16,22 @@ import ActivityIndicator from "./component/custom_activity_indicator";
 import CustomImagePicker from "./component/custom_image_picker";
 
 const About: FC<NavigationProps> = ({ navigation, route }) => {
-   // const userToken = store.getState().auth.userToken;
+
     const [sender, setId] = useState<String>("");
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [imageUri, setImageUri] = useState<String>("");
-    const [firstName, setfirstname] = useState<String>("");
-    const [lastName, setlastname] = useState<String>("");
-
+    const [Name, setname] = useState<String>("");
     const [profile, setProfile] = useState<any>("");
 
     const getUserData = async (email: String) => {
         const userProfile = StudnetModel.getUserProfile(email);
         return userProfile;
     };
-    const waitForDataLoad = async () => {
-        let p = await getUserData(userToken!.email);
-        setProfile(p);
-    };
+
     React.useEffect(() => {
-        waitForDataLoad();
-        setfirstname(profile.firstName)
-        setlastname(profile.lastName)
+
+        setname(profile.firstName)
+
     }, []);
 
     const onSave = async () => {
@@ -45,7 +40,7 @@ const About: FC<NavigationProps> = ({ navigation, route }) => {
             console.log("saving image");
             const url = await StudnetModel.uploadImage(imageUri);
             console.log("saving image finish url : " + url);
-            //await StudnetModel.updateUserProfile(firstName,lastName,userToken!.email,url)
+
         }
 
         setIsLoading(false);
@@ -75,16 +70,11 @@ const About: FC<NavigationProps> = ({ navigation, route }) => {
                 </Text>
                 <Input
 
-                    onChangeText={setfirstname}
-                    placeholder="First Name"
+                    onChangeText={setname}
+                    placeholder="Name"
                     keyboardType="default"
                 >{profile.firstName}</Input>
-                <Input
 
-                    onChangeText={setlastname}
-                    placeholder="Last Name"
-                    keyboardType="default"
-                >{profile.lastName}</Input>
 
                 <Button
                     title="SAVE"

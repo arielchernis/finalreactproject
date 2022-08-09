@@ -49,6 +49,10 @@ const deletePost = async (name : String) => {
     const res = await StudentApi.deletePost(name)
     return res
 }
+const getMyPosts = async ()=>{
+    const posts = await StudentApi.getMyPosts()
+    return posts
+}
 
 export default {
     addStudents,
@@ -58,6 +62,6 @@ export default {
     getUser,
     addUsers,
     uploadImage,
-    deletePost
-
+    deletePost,
+    getMyPosts
 }

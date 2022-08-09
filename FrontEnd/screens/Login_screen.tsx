@@ -96,11 +96,18 @@ const Login: FC<{ navigation: any, route: any ,isLogin:boolean}> = ({ navigation
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
 
-            <Icon
-                reverse
-                name="person-circle-outline"
-                type='ionicon'
-            />
+            <LottieView
+                autoPlay
+                loop
+                source={require("./Animations/customer.json")}
+                ref={animation}
+                style={{
+                    width: 50,
+                    height: 50,
+                }}
+
+            ></LottieView>
+
             <Divider width = {30}/>
             <Input
                 onChangeText={setEmail}

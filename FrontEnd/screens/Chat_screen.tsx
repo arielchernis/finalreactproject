@@ -73,7 +73,7 @@ const ChatScreen: FC<{ navigation: any, route: any }> = ({ navigation, route }) 
 
     useEffect(() => {
         //waitForDataLoad();
-        socketRef.current = io("http://192.168.0.219:3000", {
+        socketRef.current = io("http://192.168.1.179:3000", {
           
         });
         socketRef.current?.on("connect", () => {

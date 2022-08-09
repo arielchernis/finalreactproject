@@ -24,7 +24,30 @@ const getAllStudents = async () => {
     }
     return students
 }
+const getMyPosts = async () => {
+    console.log("getMyPosts")
+    const res = await apiClient.get("/post?sender=me")
+    let students = Array<Student>()
+    console.log("whats is this?"+res.ok)
+    if (res.ok) {
+        console.log("getMyPosts res.data " + res.data)
+        if (res.data){
+            res.data.forEach((item)=>{
+                console.log("getAllStudents item " + item.sender)
 
+                const st:Student = {
+                    id: item.sender,
+                    name: item.message,
+                    imageUrl: item.imageUrl
+                }
+                students.push(st)
+            })
+        }
+    } else {
+        console.log("getMyPosts fail")
+    }
+    return students
+}
 const addStudents = async (st: Student) => {
     const res = await apiClient.post("/post", {
         sender: st.id,
@@ -138,6 +161,7 @@ export default {
     getUser,
     getUseremail,
     uploadImage,
-    deletePost
+    deletePost,
+    getMyPosts
 
 }
