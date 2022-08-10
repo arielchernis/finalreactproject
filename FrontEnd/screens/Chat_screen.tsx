@@ -16,19 +16,13 @@ let messageInput: string;
 
 type MessageListRowProps = {
     message: messageType;
-    currentUser: String;
   };
 
 
-  const MessageListRow: FC<MessageListRowProps> = ({ message, currentUser }) => {
-    console.log("The message is: " + message + 'Current user is: ' + currentUser)
+  const MessageListRow: FC<MessageListRowProps> = ({ message}) => {
+    console.log("The message is: " + message + 'Current user is: ')
     return (
       <View
-        style={[
-          currentUser === message.from
-            ? styles.self_list_row_text_container
-            : styles.other_list_row_text_container,
-        ]}
       >
         <View style={styles.userInfo}>
           <View style={styles.userImageWrapper}>
@@ -57,7 +51,7 @@ const ChatScreen: FC<{ navigation: any, route: any }> = ({ navigation, route }) 
     const [profile, setProfile] = useState<any>("");
     const socketRef = useRef<Socket>();
     //const userToken = store.getState().auth.userToken;
-    const currentUser = 'abcd'
+    const currentUser = profile.email
     const date = new Date();
 
     const getUserData = async (email: String) => {
@@ -67,13 +61,13 @@ const ChatScreen: FC<{ navigation: any, route: any }> = ({ navigation, route }) 
       return userProfile;
     };
     const waitForDataLoad = async () => {
-      //let p = await getUserData(userToken!.email);
-      setProfile('abcd');
+      let p = await getUserData('abcd');
+      setProfile(p);
     };
 
     useEffect(() => {
-        //waitForDataLoad();
-        socketRef.current = io("http://192.168.1.179:3000", {
+        waitForDataLoad();
+        socketRef.current = io("http://192.168.0.219:3000", {
           
         });
         socketRef.current?.on("connect", () => {
@@ -82,9 +76,7 @@ const ChatScreen: FC<{ navigation: any, route: any }> = ({ navigation, route }) 
     
         socketRef.current?.on("ims:message_to_all", (message: messageType) => {
           setMessages((oldMessages) => [...oldMessages, message]);
-          console.log(
-            `got this message: ${message.message} on time: ${message.time},`
-          );
+          console.log(`got this message: ${message.message} on time: ${message.time},`);
         });
     
         return () => {
@@ -99,7 +91,7 @@ const ChatScreen: FC<{ navigation: any, route: any }> = ({ navigation, route }) 
         socketRef.current?.emit("message", {
           message: messageInput,
           time: date.toLocaleTimeString(),
-          from: 'abcd',
+          from: profile.email,
           imgUrl: profile.imageUrl,
         });
       };

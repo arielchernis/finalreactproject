@@ -1,8 +1,5 @@
 import React, {FC, useEffect, useRef, useState} from "react";
 import {View, Text, StyleSheet, Button, Image, TouchableHighlight, FlatList} from 'react-native'
-import Ionicons from "@expo/vector-icons/Ionicons";
-import HomeScreen from "./home_screen";
-import AboutScreen from "./Profile_screen";
 import LottieView from "lottie-react-native"
 import StudentModel, {Student} from "../model/student_model";
 import COLORS from "../constants/colors";
@@ -72,8 +69,6 @@ const styles = StyleSheet.create({
     },
     list_row_container: {
         height: 150,
-        // width: "100%",
-        // backgroundColor: "grey",
         flexDirection: "row",
         elevation: 4,
         borderRadius: 3,

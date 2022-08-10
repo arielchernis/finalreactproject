@@ -1,6 +1,5 @@
 import apiClient from "./ApiClient"
 import { Profile } from "./profile_model"
-import FormData from 'form-data'
 
 const getAllProfiles = async () => {
     console.log("getAllprofiles")
@@ -29,8 +28,6 @@ const addProfiles = async (st: Profile) => {
     const res = await apiClient.post("/auth/register", {
         email: st.email,
         password: st.password
-
-
     })
     if (res.ok) {
         console.log("addProfile success")
@@ -39,19 +36,6 @@ const addProfiles = async (st: Profile) => {
     }
 }
 
-/*const uploadImage = async (imageUri:String)=> {
-    console.log("uploadImage")
-    const formData = new FormData()
-    formData.append('file',{name: 'name', type:'iamge/jpeg', uri: imageUri})
-    let url = '/file/file'
-    const res = await apiClient.post(url,formData)
-    if (res.ok){
-        console.log("uploadImage passed " + res.data)
-        return res.data.url
-    }else{
-        console.log("save failed " + res.problem)
-    }
-}*/
 const createUserProfile = async (
     email: String,
     password: String,
@@ -74,5 +58,4 @@ export default {
     getAllProfiles,
     addProfiles,
     createUserProfile,
-    //uploadImage
 }

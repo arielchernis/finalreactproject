@@ -2,26 +2,23 @@ import React, { FC, useState,useRef, useEffect } from "react";
 import {View, Text, StyleSheet, Button, Image, TouchableHighlight, FlatList} from 'react-native'
 
 import {NavigationContainer, NavigationProp} from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
-
 import Ionicons from '@expo/vector-icons/Ionicons';
-
 import HomeScreen from "./home_screen";
 import Profile from "./Profile_screen";
-import DetailsScreen from "./details_screen";
+
 import AddPost from "./add_student_screen";
 import ChatScreen from "./Chat_screen"
 
 import MyPostsScreen from "./MyPosts_screen";
-import Login from "./Login_screen";
+
 
 
 import COLORS from "../constants/colors"
 import {createStackNavigator} from "@react-navigation/stack";
-import login_screen from "./Login_screen";
+
 import Student_model, {Student, User} from "../model/student_model";
-import StudentModel from "../model/student_model";
+
 
 const Tab = createBottomTabNavigator();
 
@@ -35,7 +32,6 @@ const ToBarAddButton:FC<{onClick:()=>void}>=({onClick})=>{
         </TouchableHighlight>
     )
 }
-
 
 const MainScreen: FC<{ navigation: NavigationProp<any,any>, route: any }> = ({ navigation, route }) => {
     const [data, setData] = useState<User>()
@@ -52,9 +48,7 @@ const MainScreen: FC<{ navigation: NavigationProp<any,any>, route: any }> = ({ n
         navigation.navigate(AddPost)
     }
     return (
-
               <>
-
             <Tab.Navigator screenOptions={({route}) => ({
                 tabBarIcon: ({focused, color, size}) => {
                     let iconName;

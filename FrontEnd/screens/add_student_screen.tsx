@@ -2,7 +2,6 @@ import React, { FC, useState } from "react"
 import { View,  StyleSheet, Image, TextInput, TouchableHighlight, ScrollView } from "react-native"
 import { Button,Icon,Input,Divider,Text } from '@rneui/themed';
 
-import COLORS from "../constants/colors"
 import StudnetModel, { Student } from "../model/student_model"
 import ActivityIndicator from "./component/custom_activity_indicator"
 import CustomImagePicker from "./component/custom_image_picker"
@@ -47,12 +46,6 @@ const AddPost: FC<{ navigation: any, route: any }> = ({ navigation, route }) => 
                     onChangeText={setName}
                     placeholder="Write Something Nice"
                     keyboardType="default"></Input>
-                {/*<TouchableHighlight
-                    onPress={onSave}
-                    underlayColor={COLORS.clickBackground}
-                    style={styles.button}>
-                    <Text style={styles.button_text}>Save</Text>
-                </TouchableHighlight>*/}
                     <Button
                     title="POST"
                     onPress={onSave}

@@ -17,9 +17,6 @@ import AddPost from "./screens/add_student_screen";
 import Login from "./screens/Login_screen";
 import RegisterScreen from "./screens/Register_screen";
 import MainScreen from "./screens/Main_screen"
-import COLORS from "./constants/colors";
-
-
 
 
 const Tab = createBottomTabNavigator();
@@ -29,10 +26,6 @@ const HomeStack = createNativeStackNavigator();
 const Stack = createStackNavigator();
 
 const UpperTab = createMaterialTopTabNavigator();
-
-
-
-
 
 
 const App: FC = () => {
@@ -66,9 +59,6 @@ const App: FC = () => {
     )
 }
 
-
-import colors from "./constants/colors";
-
 import * as ImagePicker from 'expo-image-picker'
 
 const MyImagePicker:FC = ()=> {
@@ -90,7 +80,6 @@ const MyImagePicker:FC = ()=> {
     )
 }
 
-
 const App2: FC = () => {
     return (
         <View>
@@ -102,6 +91,5 @@ const App2: FC = () => {
 const styles = StyleSheet.create({
 
 })
-
 
 export default App

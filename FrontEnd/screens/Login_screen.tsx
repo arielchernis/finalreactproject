@@ -1,6 +1,5 @@
 import React, {FC, useRef, useState} from "react"
 import {View, Text} from "react-native"
-import COLORS from "../constants/colors"
 import { Button,Icon,Input,Divider } from '@rneui/themed';
 import  { User } from "../model/student_model"
 import Student_model from "../model/student_model";
@@ -54,13 +53,6 @@ const Login: FC<{ navigation: any, route: any ,isLogin:boolean}> = ({ navigation
             alert('facebook login error')
         }
     }
-/*
-    logout = () => {
-        setLoggedinStatus(false)
-        setUserDataAsync(null)
-        setImageLoadStatus(false)
-    }
-*/
 
     const onReg = async () => {
         navigation.navigate(Register_screen)
@@ -76,17 +68,13 @@ const Login: FC<{ navigation: any, route: any ,isLogin:boolean}> = ({ navigation
 
         }
 
-
         let result = await Student_model.getUser(user);
-
 
         if (result) {
            navigation.navigate('MainScreen',{user: result})
            console.log(`i just logged in`);
 
             setIsLoading(false);
-
-
 
         } else {
             setIsLoading(false)
@@ -170,7 +158,6 @@ const Login: FC<{ navigation: any, route: any ,isLogin:boolean}> = ({ navigation
                 }}
                 titleStyle={{ fontWeight: 'bold' }}
             />
-
 
             <LottieView
                 autoPlay

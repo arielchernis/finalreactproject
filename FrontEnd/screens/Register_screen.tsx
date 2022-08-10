@@ -7,13 +7,11 @@ import Home_screen from "./home_screen";
 import LoginScreen from "./Login_screen";
 import MainScreen from "./main_screen";
 
-
 const Register: FC<{ navigation: any, route: any }> = ({ navigation, route }) => {
     const [email, setEmail] = useState<String>("")
     const [name, setName] = useState<String>("")
     const [password, setPassword] = useState<String>("")
     const [isLoading, setIsLoading] = useState<boolean>(false)
-
 
     const onLogin = async () => {
         navigation.goBack()
@@ -37,9 +35,6 @@ const Register: FC<{ navigation: any, route: any }> = ({ navigation, route }) =>
             console.log(register);
             setIsLoading(false);
 
-
-
-
         } else {
             setIsLoading(false)
             alert("User Already Exsists")
@@ -56,7 +51,6 @@ const Register: FC<{ navigation: any, route: any }> = ({ navigation, route }) =>
                 <Divider width={30}/>
                 <Input
                     onChangeText={setName}
-
                     placeholder='name'
                     leftIcon={{name: 'face'}}
                 />
@@ -70,7 +64,6 @@ const Register: FC<{ navigation: any, route: any }> = ({ navigation, route }) =>
                     placeholder='password'
                     leftIcon={{type: 'ionicon', name: 'lock-closed-outline'}}
                 />
-
 
                 <Divider width={30}/>
                 <Button

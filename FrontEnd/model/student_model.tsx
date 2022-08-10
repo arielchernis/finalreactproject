@@ -13,8 +13,6 @@ export type User = {
     imageUrl: String
 }
 
-
-
 // Users
 
 const addUsers = async (us:User)=>{

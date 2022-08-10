@@ -2,7 +2,7 @@ GET http://localhost:3000/auth/users
 Accept: application/json
 
 ###
-GET http://localhost:3000/auth/users?email=a@a.com
+GET http://localhost:3000/auth/users?email=abcd
 Accept: application/jso
 ###
 
